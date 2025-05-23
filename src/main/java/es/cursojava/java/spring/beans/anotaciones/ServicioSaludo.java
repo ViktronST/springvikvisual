@@ -4,9 +4,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Component("SaludoBean")
-@Scope(scopeName = "prototype")
-//@Service("SaludoBean")
+// @Component("SaludoBean")
+// @Scope(scopeName = "prototype")
+@Service("SaludoBean")
 public class ServicioSaludo {
 
     public ServicioSaludo() {

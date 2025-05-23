@@ -6,26 +6,28 @@ import org.springframework.stereotype.Service;
 public class CalculadoraService {
     private Numeros numeros;
 
-    public int operar(String operacion) {
-        return operar(operacion, numeros.getNum1(), numeros.getNum2());
+    public CalculadoraService() {
+        this.numeros = numeros;
     }
 
-    public int operar(String operacion, int num1, int num2) {
+    public int operar(String operacion) {
+        int a = numeros.getNum1();
+        int b = numeros.getNum2();
+
         switch (operacion) {
             case "suma":
-                return num1 + num2;
+                return a + b;
             case "resta":
-                return num1 - num2;
+                return a - b;
             case "multiplicacion":
-                return num1 * num2;
+                return a * b;
             case "division":
-                if (num2 != 0) {
-                    return (int) num1 / num2;
-                } else {
-                    throw new ArithmeticException("No se puede dividir entre cero");
+                if (b == 0) {
+                    throw new ArithmeticException("División por cero");
                 }
+                return a / b;
             default:
-                throw new IllegalArgumentException("Operación no válida");
+                throw new IllegalArgumentException("Operación no válida: " + operacion);
         }
     }
 }

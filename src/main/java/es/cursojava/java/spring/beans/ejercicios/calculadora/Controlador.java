@@ -1,28 +1,24 @@
 package es.cursojava.java.spring.beans.ejercicios.calculadora;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Component;
 
-@Controller("controlador")
+@Component("controlador")
 public class Controlador {
     private String operacion;
     private CalculadoraService calculadoraService;
 
-    public Controlador(String operacion) {
+    public Controlador(String operacion, CalculadoraService calculadoraService) {
         this.operacion = operacion;
+        this.calculadoraService = calculadoraService;
     }
 
-    public int ejecutarOperacion(String operacion, int num1, int num2) {
-        this.operacion = operacion;
-        return calculadoraService.operar(operacion, num1, num2);
+    public void ejecutaOperacion() {
+        try {
+            int resultado = calculadoraService.operar(operacion);
+            System.out.println("Resultado: " + resultado);
+        } catch (Exception e) {
+            System.out.println("Error al ejecutar la operación: " + e.getMessage());
+        }
     }
-
-    public String getOperacion() {
-        return operacion;
-    }
-
-    public void setOperacion(String operacion) {
-        this.operacion = operacion;
-    }
-
     
 }

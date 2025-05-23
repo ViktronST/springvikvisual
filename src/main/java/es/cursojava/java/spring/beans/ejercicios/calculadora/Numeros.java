@@ -8,8 +8,8 @@ public class Numeros {
     private int num2;
 
     public Numeros() {
-        this.num1 = 0;
-        this.num2 = 0;
+        this.num1 = 10;
+        this.num2 = 2;
     }
 
     public Numeros(int num1, int num2) {
