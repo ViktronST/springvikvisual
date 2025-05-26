@@ -1,15 +1,20 @@
 package es.cursojava.java.spring.beans.ejercicios.calculadora;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-@Component("numeros")
+@Component
+@Scope("prototype") // Cada vez que se inyecte, se crea una nueva instancia.
 public class Numeros {
+    
+    @Value("7")
     private int num1;
+
+    @Value("8")
     private int num2;
 
     public Numeros() {
-        this.num1 = 10;
-        this.num2 = 2;
     }
 
     public Numeros(int num1, int num2) {
@@ -32,4 +37,10 @@ public class Numeros {
     public void setNum2(int num2) {
         this.num2 = num2;
     }
+
+    @Override
+    public String toString() {
+        return "Numeros [num1=" + num1 + ", num2=" + num2 + "]";
+    }
+
 }
